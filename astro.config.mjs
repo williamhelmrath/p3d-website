@@ -8,6 +8,9 @@ import mdx from '@astrojs/mdx';
 
 import react from '@astrojs/react';
 
+import markdoc from '@astrojs/markdoc';
+import keystatic from '@keystatic/astro'
+
 // https://astro.build/config
 // See https://docs.astro.build/en/guides/deploy/github/
 // See https://starlight.astro.build/getting-started/
@@ -36,73 +39,16 @@ export default defineConfig({
     ],
     sidebar: [
       { label: 'Home', link: '/' },
-      { label: 'Roadmap', link: 'docs/guides/roadmap'},
-      { 
-        label: 'Getting Started',
-        items:
-        [
-          'docs/guides/install-game',
-          'docs/code-of-conduct',
-          'docs/guides/social-media-guidelines',
-          'docs/guides/roles',
-          'docs/guides/team-application',
-          'docs/guides/team-rules',
-          'docs/onboarding',
-          'docs/guides/q-and-a',
-        ]
-      },
-      {
-        label: 'Milestones',
-        items:
-        [
-          {
-            label: 'Milestone 1',
-            items:
-            [
-              'docs/milestones/1/promo-sources',
-            ]
-          }
-        ]
-      },
-      { label: 'P3D-Amicitia', link: '/docs/p3d-amicitia/readme' },
-      {
-        label: 'P3D-Game',
-        items:
-        [
-          'docs/p3d-game/contributing',
-          'docs/p3d-game/license',
-          'docs/p3d-game/readme',
-          {
-            label: 'Systems',
-            items:
-            [
-              'docs/p3d-game/systems/audio',
-              'docs/p3d-game/systems/collision',
-              'docs/p3d-game/systems/dialogue',
-              'docs/p3d-game/systems/environments',
-              'docs/p3d-game/systems/jmaps',
-              'docs/p3d-game/systems/models',
-              'docs/p3d-game/systems/scenes',
-            ]
-          }
-        ]
-      },
-      { label: 'P3D-Website', link: '/docs/p3d-website/readme' },
-      {
-        label: 'References',
-        items:
-        [
-          'docs/references/game-dev-team-reference',
-          'docs/references/web-dev-team-reference',
-          'docs/references/graphics-team-reference',
-          'docs/references/3d-team-reference',
-          'docs/references/art-standards',
-          'docs/references/art-portfolio',
-        ]
-      },
-      { label: 'Credits', link: 'docs/guides/credits'}
+      { label: 'Code of Conduct', link: '/docs/code-of-conduct' },
+      { label: 'Onboarding', link: '/docs/onboarding' },
+      { label: 'Guides', items: [{ autogenerate: { directory: 'docs/guides' } }] },
+      { label: 'Milestones', items: [{ autogenerate: { directory: 'docs/milestones' } }] },
+      { label: 'P3D-Game', items: [{ autogenerate: { directory: 'docs/p3d-game' } }] },
+      { label: 'P3D-Amicitia', items: [{ autogenerate: { directory: 'docs/p3d-amicitia' } }] },
+      { label: 'P3D-Website', items: [{ autogenerate: { directory: 'docs/p3d-website' } }] },
+      { label: 'References', items: [{ autogenerate: { directory: 'docs/references' } }] },
     ],
-  }), mdx(), react()],
+  }), mdx(), react(), markdoc(), keystatic()],
 
   vite: {
     plugins: [tailwindcss()],
